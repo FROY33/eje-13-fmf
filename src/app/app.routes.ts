@@ -16,6 +16,10 @@ export const routes: Routes = [
         component:Layout,
         children:[
             {
+                path:'',
+                redirectTo:'/layout/dash'
+            },
+            {
                 path:'dash',
                 component:Dash
             },
