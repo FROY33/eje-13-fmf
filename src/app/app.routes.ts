@@ -17,7 +17,8 @@ export const routes: Routes = [
         children:[
             {
                 path:'',
-                redirectTo:'/layout/dash'
+                redirectTo:'/layout/dash',
+                pathMatch:'full'
             },
             {
                 path:'dash',
