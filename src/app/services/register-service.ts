@@ -14,7 +14,10 @@ export class RegisterService {
   }
   registrarse(usuario:RegistroInterface):Observable<any>{
     //metodo para registrarnos
-    return this.httpClient.post(this.urlBase+'/auth/register',usuario)
+    return this.httpClient.post(
+      this.urlBase+'/auth/register',
+      usuario, 
+      {timeout:10000})
 
   }
 }
