@@ -4,6 +4,7 @@ import { RegisterService } from '../../../services/register-service';
 import { RegistroInterface } from '../../../models/registro-interface';
 import { form, FormField, maxLength, minLength, pattern, required, schema } from '@angular/forms/signals';
 import { errorContext } from 'rxjs/internal/util/errorContext';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,9 +17,9 @@ import { errorContext } from 'rxjs/internal/util/errorContext';
 export class Registro {
   //modelo para registro
   registerModel= signal<RegistroInterface>({
-    nombre:'jose2',
-    username:'jj@gmail.com',
-    password:'123456'
+    nombre:'',
+    username:'',
+    password:''
 
   })
   //validacion del usename
@@ -54,18 +55,21 @@ export class Registro {
     pattern(schemaPath.password,/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/,{message:'El passwor debe de contener al menos una mayuscula, una minuscula y un numero'})
   })
   
-  constructor(private registerService:RegisterService){
+  constructor(private registerService:RegisterService, private router:Router){
   }
   
   registro(){
     //probar el servicio de registro
     this.registerService.registrarse(this.registerModel()).subscribe({
       next:(respuesta)=>{
+        alert("Usuario registrado")
         console.log(respuesta)
+        this.router.navigate(['/login']);
 
       },
-      error:(err)=>{
-        console.log(err)
+      error:(error)=>{
+        alert("Ocurrio un error: " + error.error.message)
+        console.log(error)
       }
     })
   }  
