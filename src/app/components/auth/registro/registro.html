@@ -10,7 +10,7 @@
                         </small></span></a>
             <div class="auth-visual"><img src="../assets/images/png/dasher-ui-bootstrap-5.jpg"
                     alt="adminHMD dashboard interface"></div>
-            <form >
+            <form (submit)="registro()">
                 <div class="mb-4">
                     <p class="eyebrow mb-1">Acceso seguro</p>
                     <h1 class="h3 mb-1">Registrar</h1>
@@ -20,7 +20,10 @@
                         class="form-control" id="nombre" type="text" [formField]="registerForm.nombre">
                         @if(registerForm.nombre().touched() && registerForm.nombre().invalid()){
                             @for (error of registerForm.nombre().errors(); track $index){
-                                {{ error.message }}
+                                <div class="alert alert-danger mb-0" role="alert" >
+                                    {{ error.message }}
+                                </div>
+                                
 
                             }
 
@@ -30,7 +33,9 @@
                         class="form-control" id="username" type="text" [formField]="registerForm.username">
                         @if(registerForm.username().touched() && registerForm.username().invalid()){
                             @for(error of registerForm.username().errors(); track $index){
-                                {{error.message}}
+                                <div class="alert alert-danger mb-0" role="alert" >
+                                    {{ error.message }}
+                                </div>
                             }
                         }
                 </div>
@@ -38,7 +43,9 @@
                         class="form-control" id="password" type="password" [formField]="registerForm.password">
                         @if(registerForm.password().touched() && registerForm.password().invalid()){
                             @for(error of registerForm.password().errors(); track 4index){
-                                {{error.message}}
+                                <div class="alert alert-danger mb-0" role="alert" >
+                                    {{ error.message }}
+                                </div>
 
                             }
                         }
