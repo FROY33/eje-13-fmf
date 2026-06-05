@@ -18,4 +18,24 @@ export class LoginService {
       {timeout:10000}
     )
   }
+  guardarToken(token:string){
+    localStorage.setItem("token", token);
+
+  }
+
+  cerrarSesion(){
+    localStorage.removeItem("token")
+  }
+  
+  recuperarToken():string | null {
+    return localStorage.getItem("token")
+  }
+  
+  sesionIniciada():boolean{
+
+    if (this.recuperarToken()==null)
+      return false
+    else
+      return true
+  }
 }
