@@ -17,10 +17,10 @@
                     <p class="text-muted mb-0">Iniciar sesion en tu cuenta</p>
                 </div>
                 <div class="mb-3"><label class="form-label" for="username">Usuario</label> <input class="form-control"
-                        id="username" type="text" required [formField]="loginForm.username"
+                        id="username" type="text" [formField]="loginForma.username"
                         placeholder="Ingrese un nombre de usuario valido">
-                    @if(loginForm.username().touched() && loginForm.username().invalid()){
-                    @for (error of loginForm.username().errors(); track $index){
+                    @if(loginForma.username().touched() && loginForma.username().invalid()){
+                    @for (error of loginForma.username().errors(); track $index){
                     {{error.message}}
                     }
                     }
@@ -29,10 +29,10 @@
                     <div class="d-flex justify-content-between"><label class="form-label"
                             for="loginPassword">Contraseña</label><a class="small fw-semibold"
                             routerLink="/recuperar">Olvidaste tu contraseña?</a> </div>
-                    <input class="form-control" id="loginPassword" type="password" minlength="6" required
+                    <input class="form-control" id="loginPassword" type="password" [formField]="loginForma.password"
                         placeholder="******">
-                    @if(loginForm.password().touched() && loginForm.password().invalid()){
-                    @for (error of loginForm.password().errors(); track $index){
+                    @if(loginForma.password().touched() && loginForma.password().invalid()){
+                    @for (error of loginForma.password().errors(); track $index){
                     {{error.message}}
                     }
                     }
