@@ -18,13 +18,15 @@ export class LoginService {
       {timeout:10000}
     )
   }
-  guardarToken(token:string){
+  guardarToken(token:string, role:string){
     localStorage.setItem("token", token);
+    localStorage.setItem("role", role);
 
   }
 
   cerrarSesion(){
     localStorage.removeItem("token")
+    localStorage.removeItem("role")
   }
   
   recuperarToken():string | null {

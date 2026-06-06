@@ -28,6 +28,8 @@ export class Login {
   login(){
     this.loginService.login(this.loginModel()).subscribe({
       next:(value) => {
+        console.log(value)
+        this.loginService.guardarToken(value.access_token, value.user.role)
         this.router.navigate(['/layout/dash'])
       },
       error:(error) =>{
