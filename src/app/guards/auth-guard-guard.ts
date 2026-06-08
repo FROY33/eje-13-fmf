@@ -1,6 +1,12 @@
+import { inject } from '@angular/core';
 import { CanActivateFn } from '@angular/router';
+import { LoginService } from '../services/login-service';
 
 export const AuthGuard: CanActivateFn = (route, state) => {
-  
-  return true;
+  //verificar el inicio de sesion
+  const loginService =inject(LoginService)
+  if (loginService.sesionIniciada())
+    return true
+  else
+    return false
 };
