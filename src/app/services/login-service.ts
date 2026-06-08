@@ -25,8 +25,8 @@ export class LoginService {
   }
 
   cerrarSesion(){
-    localStorage.removeItem("token")
-    localStorage.removeItem("role")
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
   }
   
   recuperarToken():string | null {
